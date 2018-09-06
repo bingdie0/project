@@ -1,0 +1,17 @@
+*.iml
+*.settings
+*.idea
+.idea/compiler.xml
+*.pub
+target
+*.jar
+*.log
+**/logs
+*.local
+*.tar
+*.gz
+*.jks
+*.apk
+*.DS_Store
+*.project
+*.classpath
