@@ -10,4 +10,6 @@ import lombok.Data;
 public class TestResponse {
 
     private String name;
+
+    private String password;
 }

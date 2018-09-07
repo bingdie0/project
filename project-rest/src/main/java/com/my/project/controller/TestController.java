@@ -1,6 +1,7 @@
 package com.my.project.controller;
 
 import com.my.framework.utils.RedisUtils;
+import com.my.project.dao.TestMapper;
 import com.my.project.response.TestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,9 @@ public class TestController {
     @Autowired
     private RedisUtils redisUtils;
 
+    @Autowired
+    private TestMapper testMapper;
+
 
     /**
      * @description:
@@ -28,6 +32,7 @@ public class TestController {
         TestResponse testResponse = new TestResponse();
         testResponse.setName("Bob");
         redisUtils.set("hello", "Bob");
+        testResponse.setPassword(testMapper.getPassword("test"));
         testResponse.setName(redisUtils.get("hello", String.class));
         return testResponse;
     }
