@@ -18,14 +18,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
+        <framework-core.version>1.0</framework-core.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.my.framework</groupId>
-                <artifactId>framework-core</artifactId>
-                <version>${framework.version}</version>
+                <artifactId>project-business</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.my.framework</groupId>
+                <artifactId>framework-core-business</artifactId>
+                <version>${framework-core.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.springframework.boot</groupId>
@@ -33,6 +39,7 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>

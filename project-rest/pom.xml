@@ -12,4 +12,10 @@
     <artifactId>project-rest</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.my.framework</groupId>
+            <artifactId>project-business</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://111.231.138.140:3306/project
+    username: project
+    password: project123
+    driver-class-name: com.mysql.jdbc.Driver
+my:
+  redis:
+    host: 111.231.138.140
+    port: 6379
