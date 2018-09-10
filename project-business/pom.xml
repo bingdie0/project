@@ -32,6 +32,10 @@
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.my.framework</groupId>
+            <artifactId>redis-framework-boot-starter</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

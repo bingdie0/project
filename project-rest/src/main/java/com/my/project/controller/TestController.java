@@ -1,9 +1,10 @@
 package com.my.project.controller;
 
-import com.my.framework.utils.RedisUtils;
+import com.my.framework.redis.utils.RedisUtils;
 import com.my.project.dao.TestMapper;
 import com.my.project.response.TestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,9 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 public class TestController {
-
-    @Autowired
-    private RedisUtils redisUtils;
 
     @Autowired
     private TestMapper testMapper;
@@ -31,9 +29,9 @@ public class TestController {
     public TestResponse test() {
         TestResponse testResponse = new TestResponse();
         testResponse.setName("Bob");
-        redisUtils.set("hello", "Bob");
+        RedisUtils.set("hello", "Bob");
         testResponse.setPassword(testMapper.getPassword("test"));
-        testResponse.setName(redisUtils.get("hello", String.class));
+        testResponse.setName( RedisUtils.get("hello", String.class));
         return testResponse;
     }
 }

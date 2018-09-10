@@ -39,7 +39,11 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-
+            <dependency>
+                <groupId>com.my.framework</groupId>
+                <artifactId>redis-framework-boot-starter</artifactId>
+                <version>${framework-core.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
