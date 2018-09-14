@@ -1,56 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.my.project.dao.MenuMapper" >
-  <resultMap id="BaseResultMap" type="com.my.project.entity.Menu" >
-    <result column="id" property="id" jdbcType="INTEGER" />
-    <result column="menu_id" property="menuId" jdbcType="INTEGER" />
-    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
-    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
-    <result column="disable" property="disable" jdbcType="TINYINT" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-  </resultMap>
+<mapper namespace="com.my.project.dao.MenuMapper">
+    <resultMap id="BaseResultMap" type="com.my.project.entity.Menu">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="menu_id" property="menuId" jdbcType="INTEGER"/>
+        <result column="menu_name" property="menuName" jdbcType="VARCHAR"/>
+        <result column="parent_id" property="parentId" jdbcType="INTEGER"/>
+        <result column="level" property="level" jdbcType="INTEGER"/>
+        <result column="disable" property="disable" jdbcType="TINYINT"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
 
-  <sql id="baseSql">
-    menu_id, menu_name, parent_id, disable
+    <sql id="baseSql">
+    menu_id, menu_name, parent_id, disable, `level`
   </sql>
 
-  <insert id="insertSelective" parameterType="com.my.project.entity.Menu" >
-    insert into menu
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="menuId != null" >
-        menu_id,
-      </if>
-      <if test="menuName != null" >
-        menu_name,
-      </if>
-      <if test="parentId != null" >
-        parent_id,
-      </if>
-      <if test="disable != null" >
-        disable,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="menuId != null" >
-        #{menuId,jdbcType=INTEGER},
-      </if>
-      <if test="menuName != null" >
-        #{menuName,jdbcType=VARCHAR},
-      </if>
-      <if test="parentId != null" >
-        #{parentId,jdbcType=INTEGER},
-      </if>
-      <if test="disable != null" >
-        #{disable,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
+    <insert id="insertSelective" parameterType="com.my.project.entity.Menu">
+        insert into menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="menuId != null">
+                menu_id,
+            </if>
+            <if test="menuName != null">
+                menu_name,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="level != null">
+                `level`,
+            </if>
+            <if test="disable != null">
+                disable,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="menuId != null">
+                #{menuId,jdbcType=INTEGER},
+            </if>
+            <if test="menuName != null">
+                #{menuName,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=INTEGER},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="disable != null">
+                #{disable,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
 
-  <select id = "findMenuList" resultMap="BaseResultMap">
-    select
-    <include refid="baseSql"/>
-    from menu
-    where disable = 1
-  </select>
+    <select id="findMenuList" resultMap="BaseResultMap">
+        select
+        <include refid="baseSql"/>
+        from menu
+        where disable = 1
+    </select>
+
+    <select id="getMenuById" resultMap="BaseResultMap">
+        select
+        <include refid="baseSql"/>
+        from menu
+        where menu_id = #{menuId}
+    </select>
 </mapper>

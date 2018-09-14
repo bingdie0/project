@@ -26,6 +26,15 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public void saveMenu(Menu menu) {
         menu.setMenuId(UUIDGenerator.getNextId());
+        if (Objects.isNull(menu.getParentId())) {
+            menu.setLevel(1);
+        } else {
+            Menu parentMenu = menuMapper.getMenuById(menu.getParentId());
+            if (Objects.isNull(parentMenu)) {
+
+            }
+            menu.setLevel(parentMenu.getLevel() + 1);
+        }
         menuMapper.insertSelective(menu);
     }
 
@@ -63,6 +72,7 @@ public class MenuServiceImpl implements MenuService {
         node.setName(menu.getMenuName());
         node.setNodeId(menu.getMenuId());
         node.setParenId(menu.getMenuId());
+        node.setLevel(menu.getLevel());
         return node;
     }
 }

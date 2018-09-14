@@ -20,7 +20,9 @@ public class Menu implements Serializable {
 
     private Long parentId;
 
-    private Byte disable;
+    private Integer level;
+
+    private Integer disable;
 
     private Date createTime;
 
