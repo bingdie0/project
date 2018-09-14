@@ -13,13 +13,14 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 令牌桶限流
+ *
  * @author: Mr.WangJie
  * @date: 2018-09-12
  **/
 public class TokenBucket implements Lifecycle {
 
     /**
-     *默认桶大小个数 即最大瞬时流量是64M
+     * 默认桶大小个数 即最大瞬时流量是64M
      */
     private static final int DEFAULT_BUCKET_SIZE = 1024 * 1024 * 64;
 
