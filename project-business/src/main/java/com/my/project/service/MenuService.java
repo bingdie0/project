@@ -26,4 +26,22 @@ public interface MenuService {
      * @author: Mr.WangJie
      */
     List<TreeNode> findMenuList();
+
+    /**
+     * 更新菜单数据
+     *
+     * @param menu 菜单
+     * @return:
+     * @author: Mr.WangJie
+     */
+    void updateMenuById(Menu menu);
+
+    /**
+     * 删除菜单
+     *
+     * @param menuId 菜单id
+     * @return:
+     * @author: Mr.WangJie
+     */
+    void deleteMenuById(Long menuId);
 }

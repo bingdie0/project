@@ -31,4 +31,32 @@ public interface MenuMapper {
      * @author: Mr.WangJie
      */
     Menu getMenuById(@Param("menuId") Long menuId);
+
+    /**
+     * 更新菜单数据
+     *
+     * @param menu 菜单
+     * @return:
+     * @author: Mr.WangJie
+     */
+    void updateMenuById(Menu menu);
+
+    /**
+     * 删除菜单
+     *
+     * @param menuId 菜单id
+     * @return:
+     * @author: Mr.WangJie
+     */
+    void deleteMenuById(@Param("menuId") Long menuId);
+
+    /**
+     * 删除菜单
+     *
+     * @param parentId 父id
+     * @return:
+     * @author: Mr.WangJie
+     */
+    void deleteMenuByParentId(@Param("parentId") Long parentId);
+
 }

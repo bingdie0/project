@@ -67,4 +67,28 @@
         from menu
         where menu_id = #{menuId}
     </select>
+
+    <update id="updateMenuById" parameterType="com.my.project.entity.Menu">
+        update menu
+        set
+        <if test="menuName != null">
+            menu_name = #{menuName},
+        </if>
+        <if test="disable != null">
+            disable = #{disable},
+        </if>
+        where menu_id = #{menuId}
+    </update>
+
+    <update id="deleteMenuById">
+        update menu
+        set disable = 2
+        where menu_id = #{menuId}
+    </update>
+
+    <update id="deleteMenuByParentId">
+        update menu
+        set disable = 2
+        where parent_id = #{parentId}
+    </update>
 </mapper>

@@ -5,9 +5,9 @@ import com.my.project.dao.MenuMapper;
 import com.my.project.dto.TreeNode;
 import com.my.project.entity.Menu;
 import com.my.project.service.MenuService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +42,18 @@ public class MenuServiceImpl implements MenuService {
     public List<TreeNode> findMenuList() {
         List<Menu> menuList = menuMapper.findMenuList();
         return getTree(menuList);
+    }
+
+    @Override
+    public void updateMenuById(Menu menu) {
+        menuMapper.updateMenuById(menu);
+    }
+
+    @Override
+    @Transactional
+    public void deleteMenuById(Long menuId) {
+        menuMapper.deleteMenuById(menuId);
+        menuMapper.deleteMenuByParentId(menuId);
     }
 
     private List<TreeNode> getTree(List<Menu> list) {

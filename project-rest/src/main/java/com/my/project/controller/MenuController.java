@@ -35,4 +35,34 @@ public class MenuController {
     public List<TreeNode> findMenuList() {
         return menuService.findMenuList();
     }
+
+    /**
+     * 更新菜单数据
+     *
+     * @param menuId 菜单id
+     * @param menuName 菜单名称
+     * @return:
+     * @author: Mr.WangJie
+     */
+    @PutMapping("/update")
+    public String updateMenuById(Long menuId, String menuName) {
+        Menu menu = new Menu();
+        menu.setMenuId(menuId);
+        menu.setMenuName(menuName);
+        menuService.updateMenuById(menu);
+        return ResultConstant.SUCCESS;
+    }
+
+    /**
+     * 删除菜单
+     *
+     * @param menuId 菜单id
+     * @return:
+     * @author: Mr.WangJie
+     */
+    @DeleteMapping("/delete")
+    public String deleteMenuById(Long menuId) {
+        menuService.deleteMenuById(menuId);
+        return ResultConstant.SUCCESS;
+    }
 }
