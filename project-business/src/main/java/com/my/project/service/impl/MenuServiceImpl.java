@@ -39,9 +39,14 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public List<TreeNode> findMenuList() {
+    public List<TreeNode> findMenuTree() {
         List<Menu> menuList = menuMapper.findMenuList();
         return getTree(menuList);
+    }
+
+    @Override
+    public List<Menu> findMenuList() {
+        return menuMapper.findMenuList();
     }
 
     @Override

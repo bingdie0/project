@@ -3,7 +3,7 @@ spring:
     url: jdbc:mysql://111.231.138.140:3306/project
     username: project
     password: project123
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
 my:
   redis:
     port: 6379

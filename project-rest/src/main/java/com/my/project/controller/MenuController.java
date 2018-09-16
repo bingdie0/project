@@ -4,11 +4,14 @@ import com.my.framework.response.ResultConstant;
 import com.my.project.dto.TreeNode;
 import com.my.project.entity.Menu;
 import com.my.project.request.SaveMenuRequest;
+import com.my.project.response.MenuResponse;
 import com.my.project.service.MenuService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,9 +34,33 @@ public class MenuController {
         return ResultConstant.SUCCESS;
     }
 
-    @GetMapping("/list")
-    public List<TreeNode> findMenuList() {
-        return menuService.findMenuList();
+    /**
+     * 查询菜单tree
+     *
+     * @return: 菜单列表
+     * @author: Mr.WangJie
+     */
+    @GetMapping("/tree")
+    public List<TreeNode> findMenuTree() {
+        return menuService.findMenuTree();
+    }
+
+    /**
+     * 查询菜单列表
+     *
+     * @return: 菜单列表
+     * @author: Mr.WangJie
+     */
+    @GetMapping("/List")
+    public List<MenuResponse> findMenuList() {
+        List<Menu> menuList = menuService.findMenuList();
+        List<MenuResponse> responses = new ArrayList<>();
+        menuList.forEach(menu -> {
+            MenuResponse response = new MenuResponse();
+            BeanUtils.copyProperties(menu, response);
+            responses.add(response);
+        });
+        return responses;
     }
 
     /**

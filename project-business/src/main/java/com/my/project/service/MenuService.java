@@ -20,12 +20,20 @@ public interface MenuService {
     void saveMenu(Menu menu);
 
     /**
+     * 查询菜单tree
+     *
+     * @return: 菜单列表
+     * @author: Mr.WangJie
+     */
+    List<TreeNode> findMenuTree();
+
+    /**
      * 查询菜单列表
      *
      * @return: 菜单列表
      * @author: Mr.WangJie
      */
-    List<TreeNode> findMenuList();
+    List<Menu> findMenuList();
 
     /**
      * 更新菜单数据
