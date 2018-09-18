@@ -18,23 +18,28 @@
         </dependency>
         <dependency>
             <groupId>com.my.framework</groupId>
-            <artifactId>framework-core-business</artifactId>
+            <artifactId>framework-core</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
+            <groupId>com.my.framework</groupId>
+            <artifactId>redis-framework-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>com.my.framework</groupId>
-            <artifactId>redis-framework-boot-starter</artifactId>
+            <artifactId>framework-datasource</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
         </dependency>
     </dependencies>
 

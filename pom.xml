@@ -30,7 +30,7 @@
             </dependency>
             <dependency>
                 <groupId>com.my.framework</groupId>
-                <artifactId>framework-core-business</artifactId>
+                <artifactId>framework-core</artifactId>
                 <version>${framework-core.version}</version>
                 <exclusions>
                     <exclusion>
@@ -42,6 +42,11 @@
             <dependency>
                 <groupId>com.my.framework</groupId>
                 <artifactId>redis-framework-boot-starter</artifactId>
+                <version>${framework-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.my.framework</groupId>
+                <artifactId>framework-datasource</artifactId>
                 <version>${framework-core.version}</version>
             </dependency>
         </dependencies>
