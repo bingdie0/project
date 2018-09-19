@@ -1,6 +1,6 @@
 package com.my.project.controller;
 
-import com.my.framework.response.ResultConstant;
+import com.my.framework.web.response.ResultConstant;
 import com.my.project.dto.TreeNode;
 import com.my.project.entity.Menu;
 import com.my.project.request.SaveMenuRequest;
@@ -8,7 +8,6 @@ import com.my.project.response.MenuResponse;
 import com.my.project.service.MenuService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

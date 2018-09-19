@@ -1,6 +1,6 @@
 package com.my.project.service.impl;
 
-import com.my.framework.utils.UUIDGenerator;
+import com.my.framework.common.utils.UUIDGenerator;
 import com.my.project.dao.MenuMapper;
 import com.my.project.dto.TreeNode;
 import com.my.project.entity.Menu;

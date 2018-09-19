@@ -18,7 +18,7 @@
         </dependency>
         <dependency>
             <groupId>com.my.framework</groupId>
-            <artifactId>framework-core</artifactId>
+            <artifactId>web-framework-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

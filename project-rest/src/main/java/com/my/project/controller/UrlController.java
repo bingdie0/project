@@ -1,6 +1,6 @@
 package com.my.project.controller;
 
-import com.my.framework.response.ResultConstant;
+import com.my.framework.web.response.ResultConstant;
 import com.my.project.dto.Page;
 import com.my.project.dto.UrlQueryDTO;
 import com.my.project.entity.Url;

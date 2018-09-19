@@ -16,7 +16,6 @@ public class UrlServiceImpl implements UrlService {
 
     @Autowired
     private UrlMapper urlMapper;
-
     @Override
     public void save(Url url) {
         urlMapper.insertSelective(url);

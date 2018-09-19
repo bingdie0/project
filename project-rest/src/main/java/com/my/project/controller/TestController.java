@@ -1,8 +1,7 @@
 package com.my.project.controller;
 
-import com.my.framework.utils.RedisUtils;
+import com.my.framework.common.utils.RedisUtils;
 import com.my.project.response.TestResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
