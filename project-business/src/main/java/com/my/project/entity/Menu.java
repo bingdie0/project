@@ -1,6 +1,8 @@
 package com.my.project.entity;
 
+import com.my.framework.boot.redis.datasource.entity.BaseEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,9 +12,9 @@ import java.util.Date;
  * @date: 2018-09-14
  **/
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class Menu implements Serializable {
-    private Integer id;
+public class Menu extends BaseEntity implements Serializable {
 
     private Long menuId;
 
@@ -21,11 +23,5 @@ public class Menu implements Serializable {
     private Long parentId;
 
     private Integer level;
-
-    private Integer disable;
-
-    private Date createTime;
-
-    private Date updateTime;
 
 }

@@ -1,5 +1,6 @@
 package com.my.project.service.impl;
 
+import com.my.framework.boot.redis.datasource.service.impl.BaseSqlServiceImpl;
 import com.my.project.dao.UrlMapper;
 import com.my.project.dto.Page;
 import com.my.project.dto.UrlQueryDTO;
@@ -11,11 +12,20 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author: Mr.WangJie
+ * @date: 2018-09-14
+ **/
 @Service
-public class UrlServiceImpl implements UrlService {
+public class UrlServiceImpl extends BaseSqlServiceImpl<Url> implements UrlService {
 
     @Autowired
     private UrlMapper urlMapper;
+    @Autowired
+    public void setBaseMapper() {
+        super.setBaseMapper(urlMapper);
+    }
+
     @Override
     public void save(Url url) {
         urlMapper.insertSelective(url);

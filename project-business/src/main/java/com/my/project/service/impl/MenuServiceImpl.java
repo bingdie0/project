@@ -1,5 +1,6 @@
 package com.my.project.service.impl;
 
+import com.my.framework.boot.redis.datasource.service.impl.BaseSqlServiceImpl;
 import com.my.framework.common.utils.UUIDGenerator;
 import com.my.project.dao.MenuMapper;
 import com.my.project.dto.TreeNode;
@@ -18,10 +19,15 @@ import java.util.Objects;
  * @date: 2018-09-14
  **/
 @Service
-public class MenuServiceImpl implements MenuService {
+public class MenuServiceImpl extends BaseSqlServiceImpl<Menu> implements MenuService {
 
     @Autowired
     private MenuMapper menuMapper;
+
+    @Autowired
+    public void setBaseMapper() {
+        super.setBaseMapper(menuMapper);
+    }
 
     @Override
     public void saveMenu(Menu menu) {

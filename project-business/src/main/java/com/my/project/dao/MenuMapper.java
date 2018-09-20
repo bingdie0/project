@@ -1,19 +1,17 @@
 package com.my.project.dao;
 
+import com.my.framework.boot.redis.datasource.mapper.BaseMapper;
 import com.my.project.entity.Menu;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface MenuMapper {
+/**
+ * @author: Mr.WangJie
+ * @date: 2018-09-14
+ **/
+public interface MenuMapper extends BaseMapper<Menu> {
 
-    /**
-     * 保存菜单
-     *
-     * @param menu 菜单信息
-     * @author: Mr.WangJie
-     */
-    void insertSelective(Menu menu);
 
     /**
      * 查询菜单列表
@@ -26,7 +24,7 @@ public interface MenuMapper {
     /**
      * 根据菜单id查询菜单信息
      *
-     * @param menuId
+     * @param menuId 菜单id
      * @return:
      * @author: Mr.WangJie
      */

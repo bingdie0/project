@@ -1,5 +1,6 @@
 package com.my.project.service;
 
+import com.my.framework.boot.redis.datasource.service.BaseSqlService;
 import com.my.project.dto.TreeNode;
 import com.my.project.entity.Menu;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @author: Mr.WangJie
  * @date: 2018-09-14
  **/
-public interface MenuService {
+public interface MenuService extends BaseSqlService<Menu> {
 
     /**
      * 保存菜单
