@@ -43,6 +43,11 @@
                 <artifactId>web-framework-boot-starter</artifactId>
                 <version>${framework-core.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.my.framework</groupId>
+                <artifactId>framework-crawler</artifactId>
+                <version>${framework-core.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

@@ -5,10 +5,12 @@ import com.my.project.dto.TreeNode;
 import com.my.project.entity.Menu;
 import com.my.project.request.SaveMenuRequest;
 import com.my.project.response.MenuResponse;
+import com.my.project.service.AutoImportMenuService;
 import com.my.project.service.MenuService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import us.codecraft.webmagic.Spider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +22,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/menu")
 public class MenuController {
+    private static String categoryUrl = "https://www.taobao.com/tbhome/page/market-list";
 
     @Autowired
     private MenuService menuService;
+    @Autowired
+    private AutoImportMenuService autoImportMenuService;
 
     @PostMapping("/save")
     public String saveMenu(@RequestBody SaveMenuRequest request) {
@@ -50,7 +55,7 @@ public class MenuController {
      * @return: 菜单列表
      * @author: Mr.WangJie
      */
-    @GetMapping("/List")
+    @GetMapping("/list")
     public List<MenuResponse> findMenuList() {
         List<Menu> menuList = menuService.findMenuList();
         List<MenuResponse> responses = new ArrayList<>();
@@ -89,6 +94,12 @@ public class MenuController {
     @DeleteMapping("/delete")
     public String deleteMenuById(Long menuId) {
         menuService.deleteMenuById(menuId);
+        return ResultConstant.SUCCESS;
+    }
+
+    @GetMapping("/autoImportMenu")
+    public String autoSaveMenu() {
+        Spider.create(autoImportMenuService).addUrl(categoryUrl).run();
         return ResultConstant.SUCCESS;
     }
 }
