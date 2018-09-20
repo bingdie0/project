@@ -14,69 +14,6 @@
   <sql id="Base_Column_List" >
     id, url, title, list_pic, menu_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from url
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from url
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-
-  <insert id="insertSelective" parameterType="com.my.project.entity.Url" >
-    insert into url
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="url != null" >
-        url,
-      </if>
-      <if test="title != null" >
-        title,
-      </if>
-      <if test="listPic != null" >
-        list_pic,
-      </if>
-      <if test="menuId != null" >
-        menu_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="listPic != null" >
-        #{listPic,jdbcType=VARCHAR},
-      </if>
-      <if test="menuId != null" >
-        #{menuId,jdbcType=BIGINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.my.project.entity.Url" >
-    update url
-    <set >
-      <if test="url != null" >
-        url = #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="title != null" >
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="listPic != null" >
-        list_pic = #{listPic,jdbcType=VARCHAR},
-      </if>
-      <if test="menuId != null" >
-        menu_id = #{menuId,jdbcType=BIGINT},
-      </if>
-      <if test="disable != null" >
-        disable = #{disable,jdbcType=TINYINT},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
 
   <update id="deleteUrlById">
     update url set disable = 2 where id = #{id}
