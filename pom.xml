@@ -19,6 +19,7 @@
 
     <properties>
         <framework-core.version>1.0</framework-core.version>
+        <start-class>com.my.project.ProjectApplication</start-class>
     </properties>
 
     <dependencyManagement>
@@ -77,4 +78,13 @@
             <url>http://111.231.138.140:8081/repository/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
