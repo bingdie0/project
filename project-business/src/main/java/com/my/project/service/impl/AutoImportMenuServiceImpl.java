@@ -4,7 +4,6 @@ import com.my.framework.common.utils.UUIDGenerator;
 import com.my.project.dao.MenuMapper;
 import com.my.project.entity.Menu;
 import com.my.project.service.AutoImportMenuService;
-import com.my.project.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Page;
