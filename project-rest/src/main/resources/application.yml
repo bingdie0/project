@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://111.231.138.140:3306/project
     username: project
-    password: project123
+    password: Project@123
     driver-class-name: com.mysql.cj.jdbc.Driver
 my:
   redis:
