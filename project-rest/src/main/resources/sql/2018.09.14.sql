@@ -9,3 +9,15 @@ CREATE TABLE `menu` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='菜单表';
+
+CREATE TABLE `url` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `url` varchar(255) DEFAULT NULL COMMENT 'url地址',
+  `title` varchar(255) DEFAULT NULL COMMENT '标题',
+  `list_pic` varchar(255) DEFAULT NULL COMMENT '列表缩略图',
+  `menu_id` bigint(20) DEFAULT NULL COMMENT '菜单id',
+  `disable` tinyint(4) DEFAULT '1' COMMENT '是否可用，1可用，2不可用，默认可用',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='url表';
