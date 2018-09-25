@@ -5,9 +5,11 @@ import com.my.project.dao.UrlMapper;
 import com.my.project.dto.Page;
 import com.my.project.dto.UrlQueryDTO;
 import com.my.project.entity.Url;
+import com.my.project.service.AutoAddUrlInfoService;
 import com.my.project.service.UrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import us.codecraft.webmagic.Spider;
 
 import java.util.Collections;
 import java.util.List;
@@ -22,6 +24,9 @@ public class UrlServiceImpl extends BaseSqlServiceImpl<Url> implements UrlServic
     @Autowired
     private UrlMapper urlMapper;
     @Autowired
+    private AutoAddUrlInfoService autoAddUrlInfoService;
+
+    @Autowired
     public void setBaseMapper() {
         super.setBaseMapper(urlMapper);
     }
@@ -29,6 +34,7 @@ public class UrlServiceImpl extends BaseSqlServiceImpl<Url> implements UrlServic
     @Override
     public void save(Url url) {
         urlMapper.insertSelective(url);
+        Spider.create(autoAddUrlInfoService).addUrl(url.getUrl()).run();
     }
 
     @Override
