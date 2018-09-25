@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.my.project.dao.UrlMapper" >
-  <resultMap id="BaseResultMap" type="com.my.project.entity.Url" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="url" property="url" jdbcType="VARCHAR" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="list_pic" property="listPic" jdbcType="VARCHAR" />
-    <result column="menu_id" property="menuId" jdbcType="BIGINT" />
-    <result column="disable" property="disable" jdbcType="TINYINT" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, url, title, list_pic, menu_id
+<mapper namespace="com.my.project.dao.UrlMapper">
+    <resultMap id="BaseResultMap" type="com.my.project.entity.Url">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="list_pic" property="listPic" jdbcType="VARCHAR"/>
+        <result column="shop_name" property="shopName" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="DOUBLE"/>
+
+        <result column="shop_level_banner" property="shopLevelBanner" jdbcType="VARCHAR"/>
+        <result column="menu_id" property="menuId" jdbcType="BIGINT"/>
+        <!--<result column="disable" property="disable" jdbcType="TINYINT" />-->
+        <!--<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />-->
+        <!--<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />-->
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, url, title, list_pic, menu_id, shop_name, price
   </sql>
 
-  <update id="deleteUrlById">
+    <update id="deleteUrlById">
     update url set disable = 2 where id = #{id}
   </update>
 
-  <select id="queryUrl" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    from url
-    where 1=1
-    <if test="dto.title != null and dto.title != ''">
-      and title = #{dto.title}
-    </if>
-      <if test="dto.menuId != null">
-          and menu_id = #{dto.menuId}
-      </if>
-      order by create_time desc
-      limit (#{dto.currentPage} - 1) * #{dto.pageSize}, #{dto.pageSize}
-  </select>
+    <select id="queryUrl" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from url
+        where 1=1
+        <if test="dto.title != null and dto.title != ''">
+            and title = #{dto.title}
+        </if>
+        <if test="dto.menuId != null">
+            and menu_id = #{dto.menuId}
+        </if>
+        order by create_time desc
+        limit #{dto.offset}, #{dto.pageSize}
+    </select>
 
     <select id="countUrl" resultType="java.lang.Integer">
         select

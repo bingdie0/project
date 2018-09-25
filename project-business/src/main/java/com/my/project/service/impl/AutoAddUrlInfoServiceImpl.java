@@ -3,6 +3,7 @@ package com.my.project.service.impl;
 import com.my.project.dao.UrlMapper;
 import com.my.project.entity.Url;
 import com.my.project.service.AutoAddUrlInfoService;
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,6 +58,9 @@ public class AutoAddUrlInfoServiceImpl implements AutoAddUrlInfoService {
             shopName = html.xpath("a[@class='slogo-shopname']/strong/text()").toString();
 //            price = html.xpath("dt[@class='tb-metatit']").toString();
             title = html.xpath("div[@class='tb-detail-hd']/h1/text()").toString().trim();
+            if (StringUtils.isBlank(title)) {
+                title = html.xpath("div[@class='tb-detail-hd']/h1/a/text()").toString().trim();
+            }
             /*try {
                 String url = "http://mdskip.taobao.com/core/initItemDetail.htm?isRegionLevel=true&itemTags=385,775,843,1035,1163,1227,1478,1483,1539,1611,1863,1867,1923,2049,2059,2242,2251,2315,2507,2635,3595,3974,4166,4299,4555,4811,5259,5323,5515,6145,6785,7809,9153,11265,12353,12609,13697,13953,16321,16513,17473,17537,17665,17857,18945,19841,20289,21762,21826,25922,28802,53954&tgTag=false&addressLevel=4&isAreaSell=false&sellerPreview=false&offlineShop=false&showShopProm=false&isIFC=false&service3C=true&isSecKill=false&isForbidBuyItem=false&cartEnable=true&sellerUserTag=839979040&queryMemberRight=true&itemId=40533381395&sellerUserTag2=306250462070310924&household=false&isApparel=false¬AllowOriginPrice=false&tmallBuySupport=true&sellerUserTag3=144467169269284992&sellerUserTag4=1152930305168967075&progressiveSupport=true&isUseInventoryCenter=false&tryBeforeBuy=false&callback=setMdskip×tamp=1420351892310";
 
@@ -105,6 +109,9 @@ public class AutoAddUrlInfoServiceImpl implements AutoAddUrlInfoService {
             shopName = html.xpath("div[@class='tb-shop-name']/dl/dd/strong/a/text()").toString();
             price = html.xpath("strong[@id='J_StrPrice']/em[@class='tb-rmb-num']/tidyText()").toString();
             title = page.getHtml().xpath("//h3[@class='tb-main-title']/text()").toString();
+            if (StringUtils.isBlank(title)) {
+                title = page.getHtml().xpath("//h3[@class='tb-main-title']/a/text()").toString();
+            }
         }
 
         urlEntity.setListPic(listPic);

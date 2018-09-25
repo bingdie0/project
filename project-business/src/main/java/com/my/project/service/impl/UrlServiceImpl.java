@@ -49,6 +49,7 @@ public class UrlServiceImpl extends BaseSqlServiceImpl<Url> implements UrlServic
 
     @Override
     public Page<Url> queryUrl(UrlQueryDTO dto) {
+        dto.setOffset((dto.getCurrentPage() - 1) * dto.getPageSize());
         Page<Url> page = new Page<>();
         page.setCurrentPage(dto.getCurrentPage());
         page.setPageSize(dto.getPageSize());

@@ -13,4 +13,6 @@ public class UrlQueryDTO {
 
     private Long menuId;
 
+    private int offset;
+
 }
