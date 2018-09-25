@@ -21,6 +21,12 @@ public class Url extends BaseEntity implements Serializable {
 
     private String listPic;
 
+    private Double price;
+
+    private String shopName;
+
+    private String shopLevelBanner;
+
     private Long menuId;
 
 }
